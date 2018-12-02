@@ -16,11 +16,9 @@ Mars=turtle.Turtle()
 Jupiter=turtle.Turtle()
 Saturn=turtle.Turtle()
 Sun=turtle.Turtle()
-
 r=[40,60,80,100,130,160]
 colors=['gray','orange','blue','red','brown','green','white']
 planets=[Mercury,Venus,Earth,Mars,Jupiter,Saturn,Sun]
-
 def planet():
     wn=turtle.Screen()
     wn.bgcolor('black')
@@ -51,7 +49,6 @@ def main():
             djd=5
             jd[i]=jd[i]+djd
             step(planets[i],r[i],jd[i],i)
-
     turtle.done()
 
 if __name__ == '__main__':
