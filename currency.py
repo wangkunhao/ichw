@@ -8,17 +8,17 @@ __email__  = "1800011715@pku.edu.cn"
 """
 
 def is_number(str):
-    #ÅĞ¶Ï×Ö·û´®ÄÜ·ñ×ª»¯Îª¸¡µãÊı
+    #åˆ¤æ–­å­—ç¬¦ä¸²èƒ½å¦è½¬åŒ–ä¸ºæµ®ç‚¹æ•°
   try:
-    # ÒòÎªÊ¹ÓÃfloatÓĞÒ»¸öÀıÍâÊÇ'NaN'
+    # å› ä¸ºä½¿ç”¨floatæœ‰ä¸€ä¸ªä¾‹å¤–æ˜¯'NaN'
     if str=='NaN':
       return False
     float(str)
     return True
   except ValueError:
     return False
-def exchange(currency_from, currency_to, amount_from):#¸ù¾İ»ãÂÊ½«ÊäÈëµÄ»õ±ÒµÄÁ¿×ª»¯ÎªËùÇóµÄ»õ±ÒµÄÁ¿
-    #ÏòÍøÕ¾ÉÏ´«Êı¾İ²¢½«ÍøÕ¾ÉÏµÄ·´À¡ÏÂÔØÏÂÀ´
+def exchange(currency_from, currency_to, amount_from):#æ ¹æ®æ±‡ç‡å°†è¾“å…¥çš„è´§å¸çš„é‡è½¬åŒ–ä¸ºæ‰€æ±‚çš„è´§å¸çš„é‡
+    #å‘ç½‘ç«™ä¸Šä¼ æ•°æ®å¹¶å°†ç½‘ç«™ä¸Šçš„åé¦ˆä¸‹è½½ä¸‹æ¥
     web='http://cs1110.cs.cornell.edu/2016fa/a1server.php?from='+currency_from+'&to='+currency_to+'&amt='+amount_from
     from urllib.request import urlopen
 
@@ -27,7 +27,7 @@ def exchange(currency_from, currency_to, amount_from):#¸ù¾İ»ãÂÊ½«ÊäÈëµÄ»õ±ÒµÄÁ¿×
     doc.close()
     jstr = docstr.decode('ascii')
     jstrs=""
-    #½«ÍøÕ¾ÉÏ·´À¡µÄ×Ö·û´®²ğ½â³ÉÁĞ±í
+    #å°†ç½‘ç«™ä¸Šåé¦ˆçš„å­—ç¬¦ä¸²æ‹†è§£æˆåˆ—è¡¨
     for word in jstr:
         if word=='"':
             jstrs=jstrs+' '
@@ -35,15 +35,18 @@ def exchange(currency_from, currency_to, amount_from):#¸ù¾İ»ãÂÊ½«ÊäÈëµÄ»õ±ÒµÄÁ¿×
             jstrs=jstrs+word
     alist=jstrs.split()
     blist=[]
-    #ÅĞ¶ÏÁĞ±íÖĞµÄÊı¾İÊÇ·ñÊÇÊı×Ö
+    #åˆ¤æ–­åˆ—è¡¨ä¸­çš„æ•°æ®æ˜¯å¦æ˜¯æ•°å­—
     for num in alist:
         if is_number(num)==True:
             blist.append(num)  
     return blist[1]
-currency_from=input()
-currency_to=input()
-amount_from=input()
-print(exchange(currency_from, currency_to, amount_from))
+
+def main():
+    #ä¸»æ¨¡å—
+    currency_from=input()
+    currency_to=input()
+    amount_from=input()
+    print(exchange(currency_from, currency_to, amount_from))
 
 
 def testA():
@@ -61,3 +64,6 @@ def testall():
     testA()
     testB()
     print("All tests passed")
+
+if __name__ == '__main__':
+    main()
